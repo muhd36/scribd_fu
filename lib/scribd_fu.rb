@@ -246,7 +246,17 @@ module ScribdFu
     def display_ipaper(options = {})
       id = options.delete(:id)
       <<-END
-        <iframe class="scribd_iframe_embed" src="http://www.scribd.com/embeds/#{ipaper_id}/content?start_page=1&view_mode=slideshow&access_key=#{ipaper_access_key}" data-auto-height="true" scrolling="no" id="scribd_#{ipaper_id}" width="100%" frameborder="0"></iframe><script type="text/javascript">(function() { var scribd = document.createElement("script"); scribd.type = "text/javascript"; scribd.async = true; scribd.src = "http://www.scribd.com/javascripts/embed_code/inject.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(scribd, s); })();</script>
+      <script type='text/javascript' src='http://www.scribd.com/javascripts/scribd_api.js'></script>
+<div id='scribd_#{ipaper_id}'><a href='http://www.scribd.com'>Scribd</a></div>
+<script type="text/javascript">
+  var scribd_doc = scribd.Document.getDoc(#{ipaper_id}, '#{ipaper_access_key}');
+  var onDocReady = function(e){
+  }  
+  scribd_doc.addParam('jsapi_version', 2);
+  #{js_params(options)}  
+  scribd_doc.addEventListener('docReady', onDocReady);
+  scribd_doc.write('scribd_#{ipaper_id}');
+</script>
       END
     end
 
