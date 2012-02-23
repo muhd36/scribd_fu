@@ -142,7 +142,7 @@ module ScribdFu
 
       attr_accessor :ipaper_my_user_id
 
-      send("after_#{opts[:on]}", :upload_to_scribd) # This *MUST* be an after_save
+      # send("after_#{opts[:on]}", :upload_to_scribd) # This *MUST* be an after_save
       before_destroy :destroy_ipaper_document
     end
 
