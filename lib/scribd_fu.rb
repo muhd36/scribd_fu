@@ -263,10 +263,7 @@ module ScribdFu
     def ipaper_javascript_helper(options = {})
       id = options.delete(:id)
       <<-END
-  var scribd_doc = scribd.Document.getDoc(#{ipaper_id}>, '#{ipaper_access_key}');
-  scribd_doc.addParam('jsapi_version', 2);
-  #{js_params(options)}  
-  scribd_doc.write('scribd_#{ipaper_id});      
+  var scribd_doc = scribd.Document.getDoc(#{ipaper_id}, '#{ipaper_access_key}'); scribd_doc.addParam('jsapi_version', 2); #{js_params(options)} scribd_doc.write('scribd_#{ipaper_id}');      
       END
     end
 
