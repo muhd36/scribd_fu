@@ -248,7 +248,7 @@ module ScribdFu
       <<-END
       <script type='text/javascript' src='http://www.scribd.com/javascripts/scribd_api.js'></script>
 <div id='scribd_#{ipaper_id}'><a href='http://www.scribd.com'>Scribd</a></div>
-<script type="text/javascript">
+<script type='text/javascript'>
   var scribd_doc = scribd.Document.getDoc(#{ipaper_id}, '#{ipaper_access_key}');
   var onDocReady = function(e){
   }  
